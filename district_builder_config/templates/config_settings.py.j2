@@ -24,7 +24,12 @@ ADJACENCY = {{ True if adjacencies|length > 0 else False }}
 # functions
 CONVEX_CHOROPLETH = {{ True if convex|length > 0 else False }}
 
+EMAIL_USE_TLS = {{ True if mailer.get('use_tls') == 'true' else False }}
+EMAIL_USE_SSL = {{ True if mailer.get('use_ssl') == 'true' else False }}
+
+{% if mailer.get('submission_email') %}
 EMAIL_SUBMISSION = '{{ mailer.get('submission_email') }}'
+{% endif %}
 
 CONCURRENT_SESSIONS = {{ project.get('sessionquota') or 5 }}
 SESSION_TIMEOUT = {{ project.get('sessiontimeout') or 15 }}
